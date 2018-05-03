@@ -1,6 +1,6 @@
 package com.goon.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;	
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +23,11 @@ public class PassengerController {
 
 		// 회원가입 후 -> 홈페이지로 이동.
 
+	}
+	
+	@GetMapping("/error")
+	public String error() {
+		return "/error";
 	}
 	
 	@GetMapping("/test")
