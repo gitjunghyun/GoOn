@@ -1,28 +1,29 @@
 package com.goon.domain;
 
-import java.sql.Date;
+import java.sql.Date;		
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import lombok.Data;
 
 @Entity
-public @Data class User {
+@Table(name="Passenger")
+@Data
+public class Passenger {
 
 	@Id
 	@GeneratedValue
-	private Long id;
-	
-	@Column(nullable=false,length=50)
-	private String PsgId;
+	private Long Id;
+
 	private String PsgName;
-	private String PsgPw;
+	private String PsgEmail;
+	private String PsgPassword;
+	
 	private int PsgGender;
 	private String PsgTell;
 	private Date PsgJoinDate;
 	private String PsgPicture;
-	private String PsgEmail;
 }
