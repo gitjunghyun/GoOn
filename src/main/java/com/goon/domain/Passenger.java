@@ -1,6 +1,6 @@
 package com.goon.domain;
 
-import java.sql.Date;		
+import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,7 +22,8 @@ public class Passenger {
 	private String PsgEmail;
 	private String PsgPassword;
 	
-	private int PsgGender;
+	private int PsgAuth=0;
+	private String PsgGender;
 	private String PsgTell;
 	private Date PsgJoinDate;
 	private String PsgPicture;

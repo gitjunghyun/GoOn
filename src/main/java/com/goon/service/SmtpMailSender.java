@@ -1,6 +1,6 @@
 package com.goon.service;
 
-import javax.mail.MessagingException;
+import javax.mail.MessagingException;	
 import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +14,11 @@ public class SmtpMailSender {
 	@Autowired
 	private JavaMailSender javaMailSender;
 	
-	public void send(String to, String subject, String body) {
+	public void send(String to, String subject) {
 		
 		MimeMessage message = javaMailSender.createMimeMessage();
 		MimeMessageHelper helper;
+		String body = "<a href=\"http://210.123.254.134:8080/passenger/auth\">ㅇ!ㅈ!</a>";
 		
 		try {
 			helper = new MimeMessageHelper(message,true);
@@ -31,8 +32,5 @@ public class SmtpMailSender {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
 	}
-	
 }
