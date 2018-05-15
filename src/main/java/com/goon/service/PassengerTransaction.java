@@ -1,6 +1,6 @@
 package com.goon.service;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Component;	
 
 import com.goon.domain.Passenger;
 
@@ -9,11 +9,11 @@ public class PassengerTransaction {
 
 	private Passenger passenger;
 	
-	public void setA(Passenger psg) {
-		passenger = psg;
+	public void setPassenger(Passenger passenger) {
+		this.passenger = passenger;
 	}
 	
-	public Passenger getA() {
+	public Passenger getPassenger() {
 		return passenger;
 	}
 }

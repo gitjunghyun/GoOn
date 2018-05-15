@@ -1,6 +1,8 @@
 package com.goon.domain;
 
-import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Calendar;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,9 +24,10 @@ public class Passenger {
 	private String PsgEmail;
 	private String PsgPassword;
 	
+	//이메일 인증 여부를 0과 1로 구분(인증 후 1로 변경)
 	private int PsgAuth=0;
 	private String PsgGender;
 	private String PsgTell;
-	private Date PsgJoinDate;
+	private String PsgJoinDate = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
 	private String PsgPicture;
 }

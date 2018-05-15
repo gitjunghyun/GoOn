@@ -9,7 +9,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 
 @Component
-public class SmtpMailSender {
+public class SmtpAuth {
 	
 	@Autowired
 	private JavaMailSender javaMailSender;
@@ -18,6 +18,8 @@ public class SmtpMailSender {
 		
 		MimeMessage message = javaMailSender.createMimeMessage();
 		MimeMessageHelper helper;
+		
+		// 보내는 메일 내용
 		String body = "<a href=\"http://210.123.254.134:8080/passenger/auth\">ㅇ!ㅈ!</a>";
 		
 		try {
