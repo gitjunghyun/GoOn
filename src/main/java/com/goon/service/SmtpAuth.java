@@ -14,13 +14,14 @@ public class SmtpAuth {
 	@Autowired
 	private JavaMailSender javaMailSender;
 	
-	public void send(String to, String subject) {
+	public void send(String to) {
 		
 		MimeMessage message = javaMailSender.createMimeMessage();
 		MimeMessageHelper helper;
 		
 		// 보내는 메일 내용
-		String body = "<a href=\"http://210.123.254.134:8080/passenger/auth\">ㅇ!ㅈ!</a>";
+		String body = "<a href=\"http://210.123.254.134:8080/passenger/infoform\">ㅇ!ㅈ!</a>";
+		String subject = "안녕하세요 GoOn입니다.";
 		
 		try {
 			helper = new MimeMessageHelper(message,true);

@@ -1,0 +1,61 @@
+/*�쟾泥� �쁺�뿭�쓣 �넻���뼱�꽌 �뒪���씪 �젙�쓽*/
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+*{
+	font-family: 'Nauum Gothic';
+}
+a{
+	color: #000000;
+	text-decoration: none;
+}
+a: hover{
+	color: #bbbbbb;
+	text-decoration: none;
+	cursor: pointer;
+}
+/* �궡鍮꾧쾶�씠�뀡 �쁺�뿭*/ 
+.navbar-default{/*諛곌꼍 �깋�긽*/
+	background-color: #000000;
+	border-color: #000000;
+}
+.navbar-default .navbar-brand{/*�궡鍮꾧쾶�씠�뀡 �젣紐� �깋�긽*/
+	color: #ffffff;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus{/*�궡鍮꾧쾶�씠�뀡 �젣紐⑹뿉 留덉슦�뒪瑜� �삱�졇�쓣 �븣*/
+	background-color: transparent;
+	color:#bbbbbb;
+}
+.navbar-default .navbar-nav >.active>a,
+.navbar-default .navbar-nav >.active>a:hover,
+.navbar-default .navbar-nav >.active>a:focus{/*�쁽�옱 �넀�깮�맂 �궡鍮꾧쾶�씠�뀡 �깋�긽 �씠踰ㅽ듃*/
+	color : white;
+	background-color:#000000;
+}
+.navbar-default .navbar-nav >li>a:hover,
+.navbar-default .navbar-nav >li>a:focus{/*�궡鍮꾧쾶�씠�뀡�뀆�뀡�뿉 留덉슦�뒪瑜� �삱�졇�쓣 �븣*/
+	color : #bbbbbb;
+}
+.navbar-default .navbar-nav >.open>a,
+.navbar-default .navbar-nav >.open>a:hover,
+.navbar-default .navbar-nav >.open>a:focus{/*�쁽�옱 �넀�깮�맂 �궡鍮꾧쾶�씠�뀡 �깋�긽 �씠踰ㅽ듃*/
+	color : #000000;
+	background-color:#ffffff;
+	text-decoration: none;
+}
+.navbar-default .navbar-nav > li > a {
+	color: white;
+}
+@media (max-width: 767px){
+	/*�빐�긽�룄媛� �쟻�쓣 �븣 �뱶�엻�떎�슫 �븘�씠�뀥�뿉 留덉슦�뒪瑜� �삱�졇�쓣 �븣*/
+	.navbar-default .navbar-nav .open .dropdown-menu> li >a{
+		color: #ffffff;
+	}
+	.navbar-default .navbar-nav .open .dropdown-menu> li >a:hover,
+	.navbar-default .navbar-nav .open .dropdown-menu> li >a:focus{
+		color: #bbbbbb;
+	}
+}
+
+
+
+

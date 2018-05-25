@@ -1,7 +1,6 @@
 package com.goon.domain;
 
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
+import java.text.SimpleDateFormat;	
 import java.util.Calendar;
 
 import javax.persistence.Entity;

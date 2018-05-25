@@ -5,8 +5,37 @@
 <title>Insert title here</title>
 </head>
 <body>
-<div>
-{{ name }}
-</div>
+	<script>
+		var a = "이정현";
+	</script>
+	<div>
+		aaa
+		<form>
+			<script>
+				document.write(a);
+			</script>
+		</form>
+
+		<form action="/join" method="post">
+
+			<div class="form-group">
+				<label for="PsgName">이름</label> <input type="text"
+					class="form-control" name="PsgName" placeholder="이름">
+			</div>
+
+			<div class="form-group">
+				<label for="PsgEmail">이메일</label> <input type="email"
+					class="form-control" name="PsgEmail"
+					placeholder="example@example.com">
+				<p class="help-block">정확한 이메일을 입력해주세요.</p>
+			</div>
+
+
+			<button type="submit" class="btn btn-default">회원가입</button>
+			<a href="/"><button type="button" class="btn btn-default">취소</button></a>
+
+		</form>
+
+	</div>
 </body>
 </html>

@@ -18,6 +18,11 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
+<script type="text/javascript">
+function email(){
+	alert("이메일 인증 후 로그인 해주세요!");
+}
+</script>
 <body>
 
 	<nav class="navbar navbar-default">
@@ -59,7 +64,7 @@
 	<!-- 회원가입 입력양식 시작 -->
 	<div class="container">
 		<H3>회원가입</H3>
-		<form action="/join" method="post">
+		<form action="/passenger/join" method="post">
 
 			<div class="form-group">
 				<label for="PsgName">이름</label> <input type="text"
@@ -79,8 +84,8 @@
 				<p class="help-block">특수문자,영문,숫자가 포함된 비밀번호로 구성해주시기 바랍니다.</p>
 			</div>
 
-			<button type="submit" class="btn btn-default">회원가입</button>
-			<a href="/"><button type="button" class="btn btn-default">취소</button></a>
+			<button type="submit" class="btn btn-default" onclick="email();">회원가입</button>
+			<a href="/passenger/login"><button type="button" class="btn btn-default">취소</button></a>
 
 		</form>
 	</div>
