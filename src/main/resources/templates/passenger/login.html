@@ -14,6 +14,7 @@
 <link rel="stylesheet" type="text/css" href="../css/global.css">
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="../js/bootstrap.js"></script>
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 </head>
 <body>
 	<div class="container-fluid">
@@ -21,7 +22,7 @@
 			<div class="col-md col-sm-4 col-xs-12"></div>
 			<div class="col-md col-sm-4 col-xs-12">
 				<!-- form start -->
-				<form action="#" class="form-container" method = "POST">
+				<form action="#" class="form-container" method="POST">
 					<h1>로그인</h1>
 					<div class="form-group">
 						<label for="PsgEmail">Email</label> <input type="email"
@@ -33,10 +34,71 @@
 					</div>
 					<button href="#" class="btn btn-success btn-block">로그인</button>
 				</form>
-					<a href="/passenger/joinform"><button class="btn btn-success btn-block">이메일로
-						회원가입</button></a><br>
-					<a href="/passenger/kakaojoin"><button class="btn btn-success btn-block">카카오로
-						회원가입</button></a>
+				<a href="/passenger/joinform"><button
+						class="btn btn-success btn-block">이메일로 회원가입</button></a><br> <a
+					id="kakao-login-btn"></a> <a href="http://developers.kakao.com/logout"></a>
+
+				<form name="test" action="/passenger/kakaojoin" method="post">
+					<input type="hidden" name="PsgName" value=""> <input
+						type="hidden" name="PsgEmail" value="이메일">
+				</form>
+				<script type="text/javascript">
+					var name;
+					var email;
+					// 사용할 앱의 JavaScript 키를 설정해 주세요.
+					Kakao.init('39de6d52f3a5b6635bed9ac5330fdba9');
+					// 카카오 로그인 버튼을 생성합니다.
+
+					Kakao.Auth
+							.createLoginButton({
+								container : '#kakao-login-btn',
+								success : function(authObj) {
+									// 로그인 성공시, API를 호출합니다.
+									Kakao.API
+											.request({
+												url : '/v1/user/me',
+												success : function(res) {
+													// alert(JSON.stringify(res)); //<---- kakao.api.request 에서 불러온 결과값 json형태로 출력              
+													alert("이름:"
+															+ res.properties.nickname
+															+ "\n"
+															+ "이메일:"
+															+ res.kaccount_email);
+													alert(res.properties.nickname
+															+ "님 환영합니다.");
+
+													name = res.properties.nickname;
+													email = res.kaccount_email;
+
+													document.test.PsgName.value = name;
+													document.test.PsgEmail.value = email;
+													document.test.submit();
+												},
+												fail : function(error) {
+													alert(JSON.stringify(error));
+												}
+											});
+
+								},
+								fail : function(err) {
+									alert(JSON.stringify(err));
+								}
+							});
+
+					function ktout() {
+
+						Kakao.Auth.logout(function() {
+
+							setTimeout(function() {
+								location.href = "logout"
+							}, 3000);
+						});
+					}
+
+					document.test.PsgName.value = name;
+					document.test.PsgEmail.value = email;
+				</script>
+
 				<!-- form end -->
 			</div>
 			<div class="col-md col-sm-4 col-xs-12"></div>

@@ -1,6 +1,6 @@
 package com.goon.domain;
 
-import java.text.SimpleDateFormat;	
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import javax.persistence.Entity;
@@ -8,26 +8,28 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import lombok.Data;
-
 @Entity
-@Table(name="Passenger")
-public class Passenger {
+@Table(name = "Driver")
+public class Driver {
 
 	@Id
 	@GeneratedValue
 	private Long Id;
 
-	private String PsgName;
-	private String PsgEmail;
-	private String PsgPassword;
-	
-	//이메일 인증 여부를 0과 1로 구분(인증 후 1로 변경)
-	private int PsgAuth=0;
+	private String DriName;
+	private String DriEmail;
+	private String DriPassword;
+
+	// 이메일 인증 여부를 0과 1로 구분(인증 후 1로 변경)
+	private int PsgAuth = 0;
 	private String PsgGender;
 	private String PsgTell;
 	private String PsgJoinDate = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
 	private String PsgPicture;
+	
+
+	//운전자한테 필요한 정보 속성 추가하기!!!
+	
 	
 	public Long getId() {
 		return Id;
@@ -35,23 +37,23 @@ public class Passenger {
 	public void setId(Long id) {
 		Id = id;
 	}
-	public String getPsgName() {
-		return PsgName;
+	public String getDriName() {
+		return DriName;
 	}
-	public void setPsgName(String psgName) {
-		PsgName = psgName;
+	public void setDriName(String driName) {
+		DriName = driName;
 	}
-	public String getPsgEmail() {
-		return PsgEmail;
+	public String getDriEmail() {
+		return DriEmail;
 	}
-	public void setPsgEmail(String psgEmail) {
-		PsgEmail = psgEmail;
+	public void setDriEmail(String driEmail) {
+		DriEmail = driEmail;
 	}
-	public String getPsgPassword() {
-		return PsgPassword;
+	public String getDriPassword() {
+		return DriPassword;
 	}
-	public void setPsgPassword(String psgPassword) {
-		PsgPassword = psgPassword;
+	public void setDriPassword(String driPassword) {
+		DriPassword = driPassword;
 	}
 	public int getPsgAuth() {
 		return PsgAuth;
@@ -86,8 +88,8 @@ public class Passenger {
 	
 	@Override
 	public String toString() {
-		return "Passenger [Id=" + Id + ", PsgName=" + PsgName + ", PsgEmail=" + PsgEmail + ", PsgPassword="
-				+ PsgPassword + ", PsgAuth=" + PsgAuth + ", PsgGender=" + PsgGender + ", PsgTell=" + PsgTell
-				+ ", PsgJoinDate=" + PsgJoinDate + ", PsgPicture=" + PsgPicture + "]";
+		return "Driver [Id=" + Id + ", DriName=" + DriName + ", DriEmail=" + DriEmail + ", DriPassword=" + DriPassword
+				+ ", PsgAuth=" + PsgAuth + ", PsgGender=" + PsgGender + ", PsgTell=" + PsgTell + ", PsgJoinDate="
+				+ PsgJoinDate + ", PsgPicture=" + PsgPicture + "]";
 	}
 }

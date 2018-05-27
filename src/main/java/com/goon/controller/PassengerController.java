@@ -49,7 +49,7 @@ public class PassengerController {
 
 		return "/passenger/infoform";
 	}
-	
+
 	// 추가정보 DB연동
 	@PostMapping("/passenger/joinmember")
 	public String psginfo(Passenger psg) {
@@ -62,17 +62,16 @@ public class PassengerController {
 	}
 
 	// 카카오계정으로 회원가입
-	@GetMapping("/passenger/kakaojoin")
-	public String kakaojoin() {
-		return "/passenger/kakaojoin";
-	}
-
-	//
-	@PostMapping("/kakao/login")
-	public String login(Passenger passenger) {
-		passengerTransaction.setPassenger(passenger);
-		passengerRepository.save(passenger);
-		return "redirect:/";
+	@PostMapping("/passenger/kakaojoin")
+	public String kakaojoin(Passenger passenger) {
+		// 이미 데이터베이스에 등록되어있는 지 조건식 만들기
+		if (true) {
+			passengerTransaction.setPassenger(passenger);
+			passengerRepository.save(passenger);
+			return "redirect:/passenger/infoform";
+		} else {
+			return "redirect:/";
+		}
 	}
 
 	// // 사용자 목록 조회
