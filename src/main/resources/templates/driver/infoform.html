@@ -59,28 +59,28 @@ function join(){
 	<!-- 회원가입 입력양식 시작 -->
 	<div class="container">
 		<H3>추가정보입력</H3>
-		<form action="/passenger/joinmember" method="post">
+		<form action="/driver/joinmember" method="post">
 
 			<div class="form-group">
-				<label for="PsgGender">성별</label> 여자<input type="radio"
-					name="PsgGender" value="여자"> 남자<input type="radio"
-					name="PsgGender" value="남자">
+				<label for="DriGender">성별</label> 여자<input type="radio"
+					name="DriGender" value="여자"> 남자<input type="radio"
+					name="DriGender" value="남자">
 			</div>
 
 			<div class="form-group">
-				<label for="PsgTell">핸드폰번호</label> <input type="text"
-					class="form-control" name="PsgTell" placeholder="핸드폰번호">
+				<label for="DriTell">핸드폰번호</label> <input type="text"
+					class="form-control" name="DriTell" placeholder="핸드폰번호">
 				<p class="help-block">(-)를제외하고 입력해주세요.</p>
 			</div>
 
 			<div class="form-group">
-				<label for="PsgPicture">프로필 사진</label> <input type="file"
-					name="PsgPicture">
+				<label for="DriPicture">프로필 사진</label> <input type="file"
+					name="DriPicture">
 				<p class="help-block">2MB이하의 자신의 사진으로 등록해주세요.</p>
 			</div>
 
 			<button type="submit" class="btn btn-default" onclick="join();">완료</button>
-			<a href="/passenger/login"><button type="button" class="btn btn-default">취소</button></a>
+			<a href="/driver/login"><button type="button" class="btn btn-default">취소</button></a>
 
 		</form>
 	</div>

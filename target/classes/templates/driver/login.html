@@ -26,21 +26,21 @@
 					<h1>로그인</h1>
 					<div class="form-group">
 						<label for="PsgEmail">Email</label> <input type="email"
-							class="form-control" name="PsgEmail" placeholder="Email">
+							class="form-control" name="DriEmail" placeholder="Email">
 					</div>
 					<div class="form-group">
-						<label for="PsgPassword">Password</label> <input type="password"
-							class="form-control" name="PsgPassword" placeholder="Password">
+						<label for="DriPassword">Password</label> <input type="password"
+							class="form-control" name="DriPassword" placeholder="Password">
 					</div>
 					<button href="#" class="btn btn-success btn-block">로그인</button>
 				</form>
-				<a href="/passenger/joinform"><button
+				<a href="/driver/joinform"><button
 						class="btn btn-success btn-block">이메일로 회원가입</button></a><br> <a
 					id="kakao-login-btn"></a> <a href="http://developers.kakao.com/logout"></a>
 
-				<form name="test" action="/passenger/kakaojoin" method="post">
-					<input type="hidden" name="PsgName" value=""> <input
-						type="hidden" name="PsgEmail" value="이메일">
+				<form name="driverform" action="/driver/kakaojoin" method="post">
+					<input type="hidden" name="DriName" value=""> <input
+						type="hidden" name="DriEmail" value="이메일">
 				</form>
 				<script type="text/javascript">
 					var name;
@@ -70,9 +70,9 @@
 													name = res.properties.nickname;
 													email = res.kaccount_email;
 
-													document.test.PsgName.value = name;
-													document.test.PsgEmail.value = email;
-													document.test.submit();
+													document.driverform.DriName.value = name;
+													document.driverform.DriEmail.value = email;
+													document.driverform.submit();
 												},
 												fail : function(error) {
 													alert(JSON.stringify(error));
@@ -95,8 +95,8 @@
 						});
 					}
 
-					document.test.PsgName.value = name;
-					document.test.PsgEmail.value = email;
+					document.driverform.DriName.value = name;
+					document.driverform.DriEmail.value = email;
 				</script>
 
 				<!-- form end -->

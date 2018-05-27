@@ -1,6 +1,6 @@
 package com.goon.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;	
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -8,13 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.goon.domain.Passenger;
 import com.goon.repository.PassengerRepository;
 import com.goon.service.PassengerTransaction;
-import com.goon.service.SmtpAuth;
 
 @Controller
 public class PassengerController {
-
-	@Autowired
-	private SmtpAuth smtpAuth;
 
 	@Autowired
 	private PassengerRepository passengerRepository;
@@ -36,7 +32,7 @@ public class PassengerController {
 		passengerTransaction.setPassenger(passenger);
 		passengerRepository.save(passenger);
 
-		smtpAuth.send(passenger.getPsgEmail());
+		passengerTransaction.send(passenger.getPsgEmail());
 		return "redirect:/passenger/login";
 	}
 

@@ -1,6 +1,6 @@
 package com.goon.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired;	
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -8,13 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.goon.domain.Driver;
 import com.goon.repository.DriverRepository;
 import com.goon.service.DriverTransaction;
-import com.goon.service.SmtpAuth;
 
 @Controller
 public class DriverController {
-
-	@Autowired
-	private SmtpAuth smtpAuth;
 	
 	@Autowired
 	private DriverRepository driverRepository;
@@ -36,7 +32,7 @@ public class DriverController {
 			driverTransaction.setDriver(driver);
 			driverRepository.save(driver);
 
-			smtpAuth.send(driver.getDriEmail());
+			driverTransaction.send(driver.getDriEmail());
 			return "redirect:/driver/login";
 		}
 
@@ -44,7 +40,7 @@ public class DriverController {
 		@GetMapping("/driver/infoform")
 		public String psginfoform() {
 			driver = driverTransaction.getDriver();
-			driver.setPsgAuth(1);
+			driver.setDriAuth(1);
 			driverRepository.save(driver);
 
 			return "/driver/infoform";
@@ -54,9 +50,9 @@ public class DriverController {
 		@PostMapping("/driver/joinmember")
 		public String psginfo(Driver dri) {
 			Driver driver = driverTransaction.getDriver();
-			driver.setPsgGender(dri.getPsgGender());
-			driver.setPsgTell(dri.getPsgTell());
-			driver.setPsgPicture(dri.getPsgPicture());
+			driver.setDriGender(dri.getDriGender());
+			driver.setDriTell(dri.getDriTell());
+			driver.setDriPicture(dri.getDriPicture());
 			driverRepository.save(driver);
 			return "redirect:/";
 		}

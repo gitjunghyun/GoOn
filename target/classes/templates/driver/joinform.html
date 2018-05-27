@@ -64,28 +64,28 @@ function email(){
 	<!-- 회원가입 입력양식 시작 -->
 	<div class="container">
 		<H3>회원가입</H3>
-		<form action="/passenger/join" method="post">
+		<form action="/driver/join" method="post">
 
 			<div class="form-group">
-				<label for="PsgName">이름</label> <input type="text"
-					class="form-control" name="PsgName" placeholder="이름">
+				<label for="DriName">이름</label> <input type="text"
+					class="form-control" name="DriName" placeholder="이름">
 			</div>
 			
 			<div class="form-group">
-				<label for="PsgEmail">이메일</label> <input type="email"
-					class="form-control" name="PsgEmail"
+				<label for="DriEmail">이메일</label> <input type="email"
+					class="form-control" name="DriEmail"
 					placeholder="example@example.com">
 				<p class="help-block">정확한 이메일을 입력해주세요.</p>
 			</div>
 
 			<div class="form-group">
-				<label for="PsgPassword">비밀번호</label> <input type="password"
-					class="form-control" name="PsgPassword" placeholder="비밀번호(6자이상)">
+				<label for="DriPassword">비밀번호</label> <input type="password"
+					class="form-control" name="DriPassword" placeholder="비밀번호(6자이상)">
 				<p class="help-block">특수문자,영문,숫자가 포함된 비밀번호로 구성해주시기 바랍니다.</p>
 			</div>
 
 			<button type="submit" class="btn btn-default" onclick="email();">회원가입</button>
-			<a href="/passenger/login"><button type="button" class="btn btn-default">취소</button></a>
+			<a href="/driver/login"><button type="button" class="btn btn-default">취소</button></a>
 
 		</form>
 	</div>
