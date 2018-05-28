@@ -11,4 +11,16 @@ public class MapController {
 	public String map() {
 		return "/map/main";
 	}
+
+	// 지도 표시
+	@GetMapping("/map/marker")
+	public String marker() {
+		return "/map/marker";
+	}
+
+	// 지도 표시
+	@GetMapping("/map/infowindow")
+	public String infowindow() {
+		return "/map/infowindow";
+	}
 }
