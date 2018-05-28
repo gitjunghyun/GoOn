@@ -12,15 +12,21 @@ public class MapController {
 		return "/map/main";
 	}
 
-	// 지도 표시
-	@GetMapping("/map/marker")
-	public String marker() {
-		return "/map/marker";
-	}
+//	// 설정한 경로 표시
+//	@PostMapping("/map/route")
+//	public String maproute(Model model) {
+//		return "/map/route";
+//	}
 
-	// 지도 표시
-	@GetMapping("/map/infowindow")
-	public String infowindow() {
-		return "/map/infowindow";
-	}
+	// // 지도 표시
+	// @GetMapping("/map/marker")
+	// public String marker() {
+	// return "/map/marker";
+	// }
+	//
+	// // 지도 표시
+	// @GetMapping("/map/infowindow")
+	// public String infowindow() {
+	// return "/map/infowindow";
+	// }
 }

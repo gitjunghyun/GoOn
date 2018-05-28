@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>지도 생성하기</title>
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8eb2965eb53a03a8e4f94e1818f2a462"></script>
+</head>
+<body>
+	<!-- 지도를 표시할 div 입니다 -->
+	<div id="map" style="width: 100%; height: 800px;"></div>
+
+	<script>
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		mapOption = {
+			center : new daum.maps.LatLng(37.5636037, 126.9731555), // 지도의 중심좌표
+			level : 8
+		// 지도의 확대 레벨
+		};
+
+		// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+		var map = new daum.maps.Map(mapContainer, mapOption);
+	</script>
+	<br>
+</body>
+</html>

@@ -5,6 +5,14 @@
 <title>지도 생성하기</title>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=8eb2965eb53a03a8e4f94e1818f2a462"></script>
+<script type="text/javascript">
+function starting(lat,lng){
+	alert("위도는"+lat +"경도는"+lng);
+}
+function destination(){
+	alert("목적지");
+}
+</script>
 </head>
 <body>
 	<!-- 지도를 표시할 div 입니다 -->
@@ -24,7 +32,7 @@
 		// 지도를 클릭한 위치에 표출할 마커입니다
 		var marker = new daum.maps.Marker();
 
-		var iwContent = '<div style="padding:5px;"><a><button>출발지</button></a> <a><button>도착지</button></a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+		var iwContent = '<div style="padding:5px;"><a onclick="starting();"><button>출발지</button></a> <a onclick="destination();"><button>도착지</button></a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 		iwPosition = new daum.maps.LatLng();
 		// 인포윈도우를 생성합니다
 		var infowindow = new daum.maps.InfoWindow({
@@ -32,7 +40,7 @@
 		    content : iwContent 
 		});
 		
-		
+		// 지도클릭시 발생하는 이벤트
 		daum.maps.event.addListener(map, 'click', function(mouseEvent) {
 			
 			infowindow.close();
@@ -42,18 +50,25 @@
 			
 			// 클릭한 위도, 경도 정보를 가져옵니다 
 			var latlng = mouseEvent.latLng;
+			var lat = latlng.getLat();
+			var lng = latlng.getLng();
+			var test=7;
 
+			starting(lat,lng);
+			var iwContent = '<div style="padding:5px;"><a onclick="starting();"><button>출발지</button></a> <a onclick="destination();"><button>도착지</button></a></div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
 			iwPosition = infowindow.setPosition(latlng); //인포윈도우 표시 위치입니다
-			
+
 			// 마커 위치를 클릭한 위치로 옮깁니다
 			marker.setPosition(latlng);
-			
 			
 			// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
 			infowindow.open(map, marker); 
 		});
 	</script>
 	<br>
-	<a href="#"><button>경로 설정!!!</button></a>
+	<form action="/passenger/joinmember" method="post">
+	<input></input>
+	<a href="#"><button type = "submit">경로 설정!!!</button></a>
+	</form>
 </body>
 </html>
