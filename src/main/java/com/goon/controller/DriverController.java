@@ -16,7 +16,7 @@ public class DriverController {
 	private DriverRepository driverRepository;
 	
 	@Autowired
-	private DriverService driverTransaction;
+	private DriverService driverService;
 	
 	private Driver driver;
 	
@@ -29,17 +29,17 @@ public class DriverController {
 		// 이메일회원가입 DB연동 및 인증이메일 전송
 		@PostMapping("/driver/join")
 		public String psgjoin(Driver driver) {// create안에 인자를 다 넣으면 복잡해지므로 User클래스를추가해서 사용한다.
-			driverTransaction.setDriver(driver);
+			driverService.setDriver(driver);
 			driverRepository.save(driver);
 
-			driverTransaction.send(driver.getDriEmail());
+			driverService.send(driver.getDriEmail());
 			return "redirect:/driver/login";
 		}
 
 		// 이메일 인증 후 추가정보 입력페이지 및 이메일인증 DB연동
 		@GetMapping("/driver/infoform")
 		public String psginfoform() {
-			driver = driverTransaction.getDriver();
+			driver = driverService.getDriver();
 			driver.setDriAuth(1);
 			driverRepository.save(driver);
 
@@ -49,7 +49,7 @@ public class DriverController {
 		// 추가정보 DB연동
 		@PostMapping("/driver/joinmember")
 		public String psginfo(Driver dri) {
-			Driver driver = driverTransaction.getDriver();
+			Driver driver = driverService.getDriver();
 			driver.setDriGender(dri.getDriGender());
 			driver.setDriTell(dri.getDriTell());
 			driver.setDriPicture(dri.getDriPicture());
@@ -62,7 +62,7 @@ public class DriverController {
 		public String kakaojoin(Driver driver) {
 			// 이미 데이터베이스에 등록되어있는 지 조건식 만들기
 			if (true) {
-				driverTransaction.setDriver(driver);
+				driverService.setDriver(driver);
 				driverRepository.save(driver);
 				return "redirect:/driver/infoform";
 			} else {

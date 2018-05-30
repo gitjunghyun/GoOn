@@ -4,7 +4,6 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
@@ -19,7 +18,7 @@ public class PassengerController {
 	private PassengerRepository passengerRepository;
 
 	@Autowired
-	private PassengerService passengerTransaction;
+	private PassengerService passengerService;
 
 	private Passenger passenger;
 
@@ -31,18 +30,27 @@ public class PassengerController {
 
 	// 이메일회원가입 DB연동 및 인증이메일 전송
 	@PostMapping("/passenger/join")
-	public String psgjoin(Passenger passenger) {// create안에 인자를 다 넣으면 복잡해지므로 User클래스를추가해서 사용한다.
-		passengerTransaction.setPassenger(passenger);
-		passengerRepository.save(passenger);
+	public String psgjoin(Passenger psg) {// create안에 인자를 다 넣으면 복잡해지므로 User클래스를추가해서 사용한다.
+		passenger = passengerRepository.findByPsgEmail(psg.getPsgEmail());
 
-		passengerTransaction.send(passenger.getPsgEmail());
-		return "redirect:/passenger/login";
+		if (passenger == null) {
+			passengerRepository.save(psg);
+			passengerService.send(psg.getPsgEmail());
+
+			return "redirect:/passenger/loginform";
+		} else {
+			// 이미 존재하는 이메일이라는 알림 페이지 만들기
+			return "redirect:/";
+		}
 	}
 
 	// 이메일 인증 후 추가정보 입력페이지 및 이메일인증 DB연동
 	@GetMapping("/passenger/infoform")
-	public String psginfoform() {
-		passenger = passengerTransaction.getPassenger();
+	public String psginfoform(HttpSession session) {
+		String email = (session.getAttribute("email")).toString();
+		System.out.println(email);
+		passenger = passengerRepository.findByPsgEmail(email);
+
 		passenger.setPsgAuth(1);
 		passengerRepository.save(passenger);
 
@@ -51,8 +59,10 @@ public class PassengerController {
 
 	// 추가정보 DB연동
 	@PostMapping("/passenger/joinmember")
-	public String psginfo(Passenger psg) {
-		Passenger passenger = passengerTransaction.getPassenger();
+	public String psginfo(Passenger psg, HttpSession session) {
+		String email = (session.getAttribute("email")).toString();
+		passenger = passengerRepository.findByPsgEmail(email);
+
 		passenger.setPsgGender(psg.getPsgGender());
 		passenger.setPsgTell(psg.getPsgTell());
 		passenger.setPsgPicture(psg.getPsgPicture());
@@ -61,32 +71,34 @@ public class PassengerController {
 	}
 
 	// 로그인
-	@PostMapping("/passenger/log")
-	public String psglogin(String PsgEmail, String PsgPassword, Model model,HttpSession session) {
-//		Passenger passenger = passengerRepository.findByPsgEmail(PsgEmail);
-//		
-//		if(passenger == null) {
-//			System.out.println("로그인 실패");
-//			return "/passenger/log";
-//		}
-//		if(!PsgPassword.equals(passenger.getPsgPassword())) {
-//			System.out.println("로그인 실패");
-//			return "/passenger/log";
-//		}
-		
+	@PostMapping("/passenger/login")
+	public String psglogin(Passenger psg, HttpSession session) {
+		passenger = passengerRepository.findByPsgEmail(psg.getPsgEmail());
+
+		if (passenger == null) {
+			System.out.println("로그인 실패");
+			return "/passenger/login";
+		}
+		if (!psg.getPsgPassword().equals(passenger.getPsgPassword())) {
+			System.out.println("로그인 실패");
+			return "/passenger/login";
+		}
+
 		System.out.println("로그인 성공");
-		session.setAttribute("user","이정현");
-		model.addAttribute("name", "이정현");
+
+		session.setAttribute("passenger", passenger);
+		session.setAttribute("email", passenger.getPsgEmail());
+		session.setAttribute("name", passenger.getPsgName());
 
 		return "redirect:/";
 	}
 
 	// 카카오계정으로 회원가입
 	@PostMapping("/passenger/kakaojoin")
-	public String kakaojoin(Passenger passenger) {
-		// 이미 데이터베이스에 등록되어있는 지 조건식 만들기
-		if (true) {
-			passengerTransaction.setPassenger(passenger);
+	public String kakaojoin(Passenger psg) {
+		passenger = passengerRepository.findByPsgEmail(psg.getPsgEmail());
+
+		if (passenger == null) {
 			passengerRepository.save(passenger);
 			return "redirect:/passenger/infoform";
 		} else {

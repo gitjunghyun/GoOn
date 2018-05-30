@@ -16,18 +16,19 @@ public class Driver {
 	@GeneratedValue
 	private Long Id;
 
-	private String DriName;
-	private String DriEmail;
-	private String DriPassword;
+	private String driName;
+	private String driEmail;
+	private String driPassword;
 
 	// 이메일 인증 여부를 0과 1로 구분(인증 후 1로 변경)
-	private int DriAuth = 0;
-	private String DriGender;
-	private String DriTell;
-	private String DriJoinDate = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
-	private String DriPicture;
+	private int driAuth = 0;
+	private String driGender;
+	private String driTell;
+	private String driJoinDate = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
+	private String driPicture;
 	
 	//운전자한테 필요한 정보 속성 추가하기!!!
+	
 	
 	
 	
@@ -38,58 +39,57 @@ public class Driver {
 		Id = id;
 	}
 	public String getDriName() {
-		return DriName;
+		return driName;
 	}
 	public void setDriName(String driName) {
-		DriName = driName;
+		this.driName = driName;
 	}
 	public String getDriEmail() {
-		return DriEmail;
+		return driEmail;
 	}
 	public void setDriEmail(String driEmail) {
-		DriEmail = driEmail;
+		this.driEmail = driEmail;
 	}
 	public String getDriPassword() {
-		return DriPassword;
+		return driPassword;
 	}
 	public void setDriPassword(String driPassword) {
-		DriPassword = driPassword;
+		this.driPassword = driPassword;
 	}
 	public int getDriAuth() {
-		return DriAuth;
+		return driAuth;
 	}
 	public void setDriAuth(int driAuth) {
-		DriAuth = driAuth;
+		this.driAuth = driAuth;
 	}
 	public String getDriGender() {
-		return DriGender;
+		return driGender;
 	}
 	public void setDriGender(String driGender) {
-		DriGender = driGender;
+		this.driGender = driGender;
 	}
 	public String getDriTell() {
-		return DriTell;
+		return driTell;
 	}
 	public void setDriTell(String driTell) {
-		DriTell = driTell;
+		this.driTell = driTell;
 	}
 	public String getDriJoinDate() {
-		return DriJoinDate;
+		return driJoinDate;
 	}
 	public void setDriJoinDate(String driJoinDate) {
-		DriJoinDate = driJoinDate;
+		this.driJoinDate = driJoinDate;
 	}
 	public String getDriPicture() {
-		return DriPicture;
+		return driPicture;
 	}
 	public void setDriPicture(String driPicture) {
-		DriPicture = driPicture;
+		this.driPicture = driPicture;
 	}
-	
 	@Override
 	public String toString() {
-		return "Driver [Id=" + Id + ", DriName=" + DriName + ", DriEmail=" + DriEmail + ", DriPassword=" + DriPassword
-				+ ", DriAuth=" + DriAuth + ", DriGender=" + DriGender + ", DriTell=" + DriTell + ", DriJoinDate="
-				+ DriJoinDate + ", DriPicture=" + DriPicture + "]";
+		return "Driver [Id=" + Id + ", driName=" + driName + ", driEmail=" + driEmail + ", driPassword=" + driPassword
+				+ ", driAuth=" + driAuth + ", driGender=" + driGender + ", driTell=" + driTell + ", driJoinDate="
+				+ driJoinDate + ", driPicture=" + driPicture + "]";
 	}
 }

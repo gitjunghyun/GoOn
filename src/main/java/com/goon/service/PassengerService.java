@@ -1,6 +1,6 @@
 package com.goon.service;
 
-import javax.mail.MessagingException;
+import javax.mail.MessagingException;	
 import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,24 +8,12 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;	
 
-import com.goon.domain.Passenger;
-
 @Component
 public class PassengerService {
 
 	@Autowired
 	private JavaMailSender javaMailSender;
 
-	private Passenger passenger;
-	
-	public void setPassenger(Passenger passenger) {
-		this.passenger = passenger;
-	}
-	
-	public Passenger getPassenger() {
-		return passenger;
-	}
-	
 	public void send(String to) {
 		
 		MimeMessage message = javaMailSender.createMimeMessage();

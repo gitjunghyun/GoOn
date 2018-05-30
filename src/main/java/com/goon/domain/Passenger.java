@@ -1,6 +1,6 @@
 package com.goon.domain;
 
-import java.text.SimpleDateFormat;			
+import java.text.SimpleDateFormat;				
 import java.util.Calendar;
 
 import javax.persistence.Entity;
@@ -16,16 +16,16 @@ public class Passenger {
 	@GeneratedValue
 	private Long Id;
 
-	private String PsgName;
+	private String psgName;
 	private String psgEmail;
-	private String PsgPassword;
+	private String psgPassword;
 	
 	//이메일 인증 여부를 0과 1로 구분(인증 후 1로 변경)
-	private int PsgAuth=0;
-	private String PsgGender;
-	private String PsgTell;
-	private String PsgJoinDate = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
-	private String PsgPicture;
+	private int psgAuth=0;
+	private String psgGender;
+	private String psgTell;
+	private String psgJoinDate = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(Calendar.getInstance().getTime());
+	private String psgPicture;
 	
 	public Long getId() {
 		return Id;
@@ -34,58 +34,58 @@ public class Passenger {
 		Id = id;
 	}
 	public String getPsgName() {
-		return PsgName;
+		return psgName;
 	}
 	public void setPsgName(String psgName) {
-		PsgName = psgName;
+		this.psgName = psgName;
 	}
 	public String getPsgEmail() {
 		return psgEmail;
 	}
 	public void setPsgEmail(String psgEmail) {
-		psgEmail = psgEmail;
+		this.psgEmail = psgEmail;
 	}
 	public String getPsgPassword() {
-		return PsgPassword;
+		return psgPassword;
 	}
 	public void setPsgPassword(String psgPassword) {
-		PsgPassword = psgPassword;
+		this.psgPassword = psgPassword;
 	}
 	public int getPsgAuth() {
-		return PsgAuth;
+		return psgAuth;
 	}
 	public void setPsgAuth(int psgAuth) {
-		PsgAuth = psgAuth;
+		this.psgAuth = psgAuth;
 	}
 	public String getPsgGender() {
-		return PsgGender;
+		return psgGender;
 	}
 	public void setPsgGender(String psgGender) {
-		PsgGender = psgGender;
+		this.psgGender = psgGender;
 	}
 	public String getPsgTell() {
-		return PsgTell;
+		return psgTell;
 	}
 	public void setPsgTell(String psgTell) {
-		PsgTell = psgTell;
+		this.psgTell = psgTell;
 	}
 	public String getPsgJoinDate() {
-		return PsgJoinDate;
+		return psgJoinDate;
 	}
 	public void setPsgJoinDate(String psgJoinDate) {
-		PsgJoinDate = psgJoinDate;
+		this.psgJoinDate = psgJoinDate;
 	}
 	public String getPsgPicture() {
-		return PsgPicture;
+		return psgPicture;
 	}
 	public void setPsgPicture(String psgPicture) {
-		PsgPicture = psgPicture;
+		this.psgPicture = psgPicture;
 	}
 	
 	@Override
 	public String toString() {
-		return "Passenger [Id=" + Id + ", PsgName=" + PsgName + ", PsgEmail=" + psgEmail + ", PsgPassword="
-				+ PsgPassword + ", PsgAuth=" + PsgAuth + ", PsgGender=" + PsgGender + ", PsgTell=" + PsgTell
-				+ ", PsgJoinDate=" + PsgJoinDate + ", PsgPicture=" + PsgPicture + "]";
+		return "Passenger [Id=" + Id + ", psgName=" + psgName + ", psgEmail=" + psgEmail + ", psgPassword="
+				+ psgPassword + ", psgAuth=" + psgAuth + ", psgGender=" + psgGender + ", psgTell=" + psgTell
+				+ ", psgJoinDate=" + psgJoinDate + ", psgPicture=" + psgPicture + "]";
 	}
 }

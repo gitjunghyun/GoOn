@@ -26,11 +26,11 @@
 					<h1>로그인</h1>
 					<div class="form-group">
 						<label for="PsgEmail">Email</label> <input type="email"
-							class="form-control" name="DriEmail" placeholder="Email">
+							class="form-control" name="driEmail" placeholder="Email">
 					</div>
 					<div class="form-group">
-						<label for="DriPassword">Password</label> <input type="password"
-							class="form-control" name="DriPassword" placeholder="Password">
+						<label for="driPassword">Password</label> <input type="password"
+							class="form-control" name="driPassword" placeholder="Password">
 					</div>
 					<button href="#" class="btn btn-success btn-block">로그인</button>
 				</form>
@@ -39,8 +39,8 @@
 					id="kakao-login-btn"></a> <a href="http://developers.kakao.com/logout"></a>
 
 				<form name="driverform" action="/driver/kakaojoin" method="post">
-					<input type="hidden" name="DriName" value=""> <input
-						type="hidden" name="DriEmail" value="이메일">
+					<input type="hidden" name="driName" value=""> <input
+						type="hidden" name="driEmail" value="이메일">
 				</form>
 				<script type="text/javascript">
 					var name;
@@ -70,8 +70,8 @@
 													name = res.properties.nickname;
 													email = res.kaccount_email;
 
-													document.driverform.DriName.value = name;
-													document.driverform.DriEmail.value = email;
+													document.driverform.driName.value = name;
+													document.driverform.driEmail.value = email;
 													document.driverform.submit();
 												},
 												fail : function(error) {
@@ -95,8 +95,8 @@
 						});
 					}
 
-					document.driverform.DriName.value = name;
-					document.driverform.DriEmail.value = email;
+					document.driverform.driName.value = name;
+					document.driverform.driEmail.value = email;
 				</script>
 
 				<!-- form end -->

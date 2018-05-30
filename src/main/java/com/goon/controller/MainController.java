@@ -24,13 +24,13 @@ public class MainController {
 	}
 	
 	//탑승객 로그인
-	@GetMapping("/passenger/login")
+	@GetMapping("/passenger/loginform")
 	public String psg_login() {
 		return "/passenger/login";
 	}
 	
 	//운전자 로그인
-	@GetMapping("/driver/login")
+	@GetMapping("/driver/loginform")
 	public String dri_login() {
 		return "/driver/login";
 	}
