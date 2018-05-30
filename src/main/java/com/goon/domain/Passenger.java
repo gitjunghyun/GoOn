@@ -1,6 +1,6 @@
 package com.goon.domain;
 
-import java.text.SimpleDateFormat;		
+import java.text.SimpleDateFormat;			
 import java.util.Calendar;
 
 import javax.persistence.Entity;
@@ -17,7 +17,7 @@ public class Passenger {
 	private Long Id;
 
 	private String PsgName;
-	private String PsgEmail;
+	private String psgEmail;
 	private String PsgPassword;
 	
 	//이메일 인증 여부를 0과 1로 구분(인증 후 1로 변경)
@@ -40,10 +40,10 @@ public class Passenger {
 		PsgName = psgName;
 	}
 	public String getPsgEmail() {
-		return PsgEmail;
+		return psgEmail;
 	}
 	public void setPsgEmail(String psgEmail) {
-		PsgEmail = psgEmail;
+		psgEmail = psgEmail;
 	}
 	public String getPsgPassword() {
 		return PsgPassword;
@@ -84,7 +84,7 @@ public class Passenger {
 	
 	@Override
 	public String toString() {
-		return "Passenger [Id=" + Id + ", PsgName=" + PsgName + ", PsgEmail=" + PsgEmail + ", PsgPassword="
+		return "Passenger [Id=" + Id + ", PsgName=" + PsgName + ", PsgEmail=" + psgEmail + ", PsgPassword="
 				+ PsgPassword + ", PsgAuth=" + PsgAuth + ", PsgGender=" + PsgGender + ", PsgTell=" + PsgTell
 				+ ", PsgJoinDate=" + PsgJoinDate + ", PsgPicture=" + PsgPicture + "]";
 	}

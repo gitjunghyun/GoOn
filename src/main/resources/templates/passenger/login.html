@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Login</title>
+<title>login</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport"
@@ -22,8 +22,9 @@
 			<div class="col-md col-sm-4 col-xs-12"></div>
 			<div class="col-md col-sm-4 col-xs-12">
 				<!-- form start -->
-				<form action="#" class="form-container" method="POST">
-					<h1>로그인</h1>
+				<form action="/passenger/log" class="form-container" method="POST">
+					<h1>로그인 {{# user}} 세션이 존재함 {{/ user}}
+					{{^ user}} 세션이 존재하지않음 {{/ user}}</h1>
 					<div class="form-group">
 						<label for="PsgEmail">Email</label> <input type="email"
 							class="form-control" name="PsgEmail" placeholder="Email">
@@ -32,11 +33,12 @@
 						<label for="PsgPassword">Password</label> <input type="password"
 							class="form-control" name="PsgPassword" placeholder="Password">
 					</div>
-					<button href="#" class="btn btn-success btn-block">로그인</button>
+					<button type="submit" class="btn btn-success btn-block">로그인</button>
 				</form>
 				<a href="/passenger/joinform"><button
 						class="btn btn-success btn-block">이메일로 회원가입</button></a><br> <a
-					id="kakao-login-btn"></a> <a href="http://developers.kakao.com/logout"></a>
+					id="kakao-login-btn"></a> <a
+					href="http://developers.kakao.com/logout"></a>
 
 				<form name="test" action="/passenger/kakaojoin" method="post">
 					<input type="hidden" name="PsgName" value=""> <input

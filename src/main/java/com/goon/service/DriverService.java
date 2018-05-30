@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import com.goon.domain.Driver;
 
 @Component
-public class DriverTransaction {
+public class DriverService {
 
 	@Autowired
 	private JavaMailSender javaMailSender;

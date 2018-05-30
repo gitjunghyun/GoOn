@@ -31,14 +31,16 @@
 	</nav>
 	<div class="container">
 		<div class="jumbotron">
-			<h1 class="text-center">GoOn</h1>
+			<h1 class="text-center">GoOn{{# user}} 세션이 존재함 {{/ user}}
+					{{^ user}} 세션이 존재하지않음 {{/ user}}</h1>
 			<br> <br>
 		</div>
 		<hr>
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<h3 class="panel-title">
-					<span class="glyphicon glyphicon-pencil"></span> &nbsp;&nbsp;로그인
+					<span class="glyphicon glyphicon-pencil"></span> &nbsp;&nbsp;로그인 {{# name}} 세션이 존재함 {{/ name}}
+					{{^ name}} 세션이 존재하지않음 {{/ name}}
 				</h3>
 			</div>
 			<div class="panel-body">

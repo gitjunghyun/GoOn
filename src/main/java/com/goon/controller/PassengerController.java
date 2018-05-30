@@ -1,13 +1,16 @@
 package com.goon.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;		
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.goon.domain.Passenger;
 import com.goon.repository.PassengerRepository;
-import com.goon.service.PassengerTransaction;
+import com.goon.service.PassengerService;
 
 @Controller
 public class PassengerController {
@@ -16,7 +19,7 @@ public class PassengerController {
 	private PassengerRepository passengerRepository;
 
 	@Autowired
-	private PassengerTransaction passengerTransaction;
+	private PassengerService passengerTransaction;
 
 	private Passenger passenger;
 
@@ -54,6 +57,27 @@ public class PassengerController {
 		passenger.setPsgTell(psg.getPsgTell());
 		passenger.setPsgPicture(psg.getPsgPicture());
 		passengerRepository.save(passenger);
+		return "redirect:/";
+	}
+
+	// 로그인
+	@PostMapping("/passenger/log")
+	public String psglogin(String PsgEmail, String PsgPassword, Model model,HttpSession session) {
+//		Passenger passenger = passengerRepository.findByPsgEmail(PsgEmail);
+//		
+//		if(passenger == null) {
+//			System.out.println("로그인 실패");
+//			return "/passenger/log";
+//		}
+//		if(!PsgPassword.equals(passenger.getPsgPassword())) {
+//			System.out.println("로그인 실패");
+//			return "/passenger/log";
+//		}
+		
+		System.out.println("로그인 성공");
+		session.setAttribute("user","이정현");
+		model.addAttribute("name", "이정현");
+
 		return "redirect:/";
 	}
 

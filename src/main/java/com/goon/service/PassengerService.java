@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import com.goon.domain.Passenger;
 
 @Component
-public class PassengerTransaction {
+public class PassengerService {
 
 	@Autowired
 	private JavaMailSender javaMailSender;

@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.goon.domain.Driver;
 import com.goon.repository.DriverRepository;
-import com.goon.service.DriverTransaction;
+import com.goon.service.DriverService;
 
 @Controller
 public class DriverController {
@@ -16,7 +16,7 @@ public class DriverController {
 	private DriverRepository driverRepository;
 	
 	@Autowired
-	private DriverTransaction driverTransaction;
+	private DriverService driverTransaction;
 	
 	private Driver driver;
 	
