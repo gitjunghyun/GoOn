@@ -17,9 +17,52 @@
 			level : 8
 		// 지도의 확대 레벨
 		};
-
+		
 		// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 		var map = new daum.maps.Map(mapContainer, mapOption);
+		
+		var stLat = {{stLat}};
+		var stLng = {{stLng}};
+		var deLat = {{deLat}};
+		var deLng = {{deLng}};
+		
+		// 마커가 표시될 위치입니다 
+		var markerstarting  = new daum.maps.LatLng(stLat, stLng); 
+		var markerdestination  = new daum.maps.LatLng(deLat, deLng); 
+
+		// 마커를 생성합니다
+		var startingmarker = new daum.maps.Marker({
+		    position: markerstarting
+		});
+		var destinationmarker = new daum.maps.Marker({
+		    position: markerdestination
+		});
+
+		// 마커가 지도 위에 표시되도록 설정합니다
+		startingmarker.setMap(map);
+		destinationmarker.setMap(map);
+
+		var iwContentstarting = '<div style="padding:5px;">출발</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+		    iwPositionstarting =  new daum.maps.LatLng(stLat, stLng); //인포윈도우 표시 위치입니다
+
+		var iwContentdestination = '<div style="padding:5px;">도착</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+		    iwPositiondestination = new daum.maps.LatLng(deLat, deLng); //인포윈도우 표시 위치입니다
+		    
+		// 인포윈도우를 생성합니다
+		var infowindowstarting = new daum.maps.InfoWindow({
+		    position : iwPositionstarting, 
+		    content : iwContentstarting 
+		});
+		  
+		// 인포윈도우를 생성합니다
+		var infowindowdestination = new daum.maps.InfoWindow({
+		    position : iwPositiondestination, 
+		    content : iwContentdestination
+		});
+		
+		// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+		infowindowstarting.open(map, startingmarker); 
+		infowindowdestination.open(map, destinationmarker); 
 	</script>
 	<br>
 </body>

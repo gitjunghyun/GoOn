@@ -39,7 +39,7 @@
 					id="kakao-login-btn"></a> <a
 					href="http://developers.kakao.com/logout"></a>
 
-				<form name="test" action="/passenger/kakaojoin" method="post">
+				<form name="kakaojoin" action="/passenger/kakaojoin" method="post">
 					<input type="hidden" name="psgName" value=""> <input
 						type="hidden" name="psgEmail" value="이메일">
 				</form>
@@ -71,9 +71,9 @@
 													name = res.properties.nickname;
 													email = res.kaccount_email;
 
-													document.test.psgName.value = name;
-													document.test.psgEmail.value = email;
-													document.test.submit();
+													document.kakaojoin.psgName.value = name;
+													document.kakaojoin.psgEmail.value = email;
+													document.kakaojoin.submit();
 												},
 												fail : function(error) {
 													alert(JSON.stringify(error));
@@ -96,8 +96,8 @@
 						});
 					}
 
-					document.test.psgName.value = name;
-					document.test.psgEmail.value = email;
+					document.kakaojoin.psgName.value = name;
+					document.kakaojoin.psgEmail.value = email;
 				</script>
 
 				<!-- form end -->

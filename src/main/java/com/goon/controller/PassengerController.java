@@ -48,7 +48,6 @@ public class PassengerController {
 	@GetMapping("/passenger/infoform")
 	public String psginfoform(HttpSession session) {
 		String email = (session.getAttribute("email")).toString();
-		System.out.println(email);
 		passenger = passengerRepository.findByPsgEmail(email);
 
 		passenger.setPsgAuth(1);
@@ -86,7 +85,7 @@ public class PassengerController {
 
 		System.out.println("로그인 성공");
 
-		session.setAttribute("passenger", passenger);
+		session.setAttribute("user", passenger);
 		session.setAttribute("email", passenger.getPsgEmail());
 		session.setAttribute("name", passenger.getPsgName());
 

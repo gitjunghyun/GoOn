@@ -1,6 +1,6 @@
 package com.goon.service;
 
-import javax.mail.MessagingException;
+import javax.mail.MessagingException;	
 import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,23 +8,11 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 
-import com.goon.domain.Driver;
-
 @Component
 public class DriverService {
 
 	@Autowired
 	private JavaMailSender javaMailSender;
-	
-	private Driver driver;
-
-	public void setDriver(Driver driver) {
-		this.driver = driver;
-	}
-
-	public Driver getDriver() {
-		return driver;
-	}
 
 	public void send(String to) {
 
