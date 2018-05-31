@@ -52,11 +52,7 @@
 		var lng;
 
 		// 지도클릭시 발생하는 이벤트
-		daum.maps.event
-				.addListener(
-						map,
-						'click',
-						function(mouseEvent) {
+		daum.maps.event.addListener(map,'click',function(mouseEvent) {
 
 							infowindow.close();
 

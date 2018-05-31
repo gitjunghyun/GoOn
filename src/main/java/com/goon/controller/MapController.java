@@ -23,4 +23,16 @@ public class MapController {
 		model.addAttribute("deLng", deLng);
 		return "/map/route";
 	}
+
+	// 구글 맵
+	@GetMapping("/map/google")
+	public String google() {
+		return "/map/google";
+	}
+
+	// test
+	@GetMapping("/map/test")
+	public String maptest() {
+		return "/map/test";
+	}
 }

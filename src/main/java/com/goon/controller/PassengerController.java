@@ -30,12 +30,16 @@ public class PassengerController {
 
 	// 이메일회원가입 DB연동 및 인증이메일 전송
 	@PostMapping("/passenger/join")
-	public String psgjoin(Passenger psg) {// create안에 인자를 다 넣으면 복잡해지므로 User클래스를추가해서 사용한다.
+	public String psgjoin(Passenger psg, HttpSession session) {// create안에 인자를 다 넣으면 복잡해지므로 User클래스를추가해서 사용한다.
 		passenger = passengerRepository.findByPsgEmail(psg.getPsgEmail());
 
 		if (passenger == null) {
 			passengerRepository.save(psg);
 			passengerService.send(psg.getPsgEmail());
+
+			session.setAttribute("user", psg);
+			session.setAttribute("email", psg.getPsgEmail());
+			session.setAttribute("name", psg.getPsgName());
 
 			return "redirect:/passenger/loginform";
 		} else {
@@ -62,6 +66,7 @@ public class PassengerController {
 		String email = (session.getAttribute("email")).toString();
 		passenger = passengerRepository.findByPsgEmail(email);
 
+		passenger.setPsgAuth(1);
 		passenger.setPsgGender(psg.getPsgGender());
 		passenger.setPsgTell(psg.getPsgTell());
 		passenger.setPsgPicture(psg.getPsgPicture());
@@ -75,15 +80,11 @@ public class PassengerController {
 		passenger = passengerRepository.findByPsgEmail(psg.getPsgEmail());
 
 		if (passenger == null) {
-			System.out.println("로그인 실패");
 			return "/passenger/login";
 		}
 		if (!psg.getPsgPassword().equals(passenger.getPsgPassword())) {
-			System.out.println("로그인 실패");
 			return "/passenger/login";
 		}
-
-		System.out.println("로그인 성공");
 
 		session.setAttribute("user", passenger);
 		session.setAttribute("email", passenger.getPsgEmail());
@@ -94,13 +95,22 @@ public class PassengerController {
 
 	// 카카오계정으로 회원가입
 	@PostMapping("/passenger/kakaojoin")
-	public String kakaojoin(Passenger psg) {
+	public String kakaojoin(Passenger psg, HttpSession session) {
 		passenger = passengerRepository.findByPsgEmail(psg.getPsgEmail());
 
 		if (passenger == null) {
-			passengerRepository.save(passenger);
+			passengerRepository.save(psg);
+			
+			session.setAttribute("user", psg);
+			session.setAttribute("email", psg.getPsgEmail());
+			session.setAttribute("name", psg.getPsgName());
+			
 			return "redirect:/passenger/infoform";
 		} else {
+			session.setAttribute("user", passenger);
+			session.setAttribute("email", passenger.getPsgEmail());
+			session.setAttribute("name", passenger.getPsgName());
+			
 			return "redirect:/";
 		}
 	}

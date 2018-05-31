@@ -31,13 +31,17 @@ public class DriverController {
 
 		// 이메일회원가입 DB연동 및 인증이메일 전송
 		@PostMapping("/driver/join")
-		public String psgjoin(Driver dri) {// create안에 인자를 다 넣으면 복잡해지므로 User클래스를추가해서 사용한다.
+		public String psgjoin(Driver dri, HttpSession session) {// create안에 인자를 다 넣으면 복잡해지므로 User클래스를추가해서 사용한다.
 			driver = driverRepository.findByDriEmail(dri.getDriEmail());
 
 			if (driver == null) {
 				driverRepository.save(dri);
 				driverService.send(dri.getDriEmail());
 
+				session.setAttribute("user", dri);
+				session.setAttribute("email", dri.getDriEmail());
+				session.setAttribute("name", dri.getDriName());
+				
 				return "redirect:/driver/loginform";
 			} else {
 				// 이미 존재하는 이메일이라는 알림 페이지 만들기
@@ -63,6 +67,7 @@ public class DriverController {
 			String email = (session.getAttribute("email")).toString();
 			driver = driverRepository.findByDriEmail(email);
 			
+			driver.setDriAuth(1);
 			driver.setDriGender(dri.getDriGender());
 			driver.setDriTell(dri.getDriTell());
 			driver.setDriPicture(dri.getDriPicture());
@@ -76,15 +81,11 @@ public class DriverController {
 			driver = driverRepository.findByDriEmail(dri.getDriEmail());
 
 			if (driver == null) {
-				System.out.println("로그인 실패");
 				return "/driver/login";
 			}
 			if (!dri.getDriPassword().equals(driver.getDriPassword())) {
-				System.out.println("로그인 실패");
 				return "/driver/login";
 			}
-
-			System.out.println("로그인 성공");
 
 			session.setAttribute("user", driver);
 			session.setAttribute("email", driver.getDriEmail());
@@ -95,13 +96,22 @@ public class DriverController {
 		
 		// 카카오계정으로 회원가입
 		@PostMapping("/driver/kakaojoin")
-		public String kakaojoin(Driver dri) {
+		public String kakaojoin(Driver dri, HttpSession session) {
 			driver = driverRepository.findByDriEmail(dri.getDriEmail());
 			
 			if (driver == null) {
 				driverRepository.save(driver);
+				
+				session.setAttribute("user", dri);
+				session.setAttribute("email", dri.getDriEmail());
+				session.setAttribute("name", dri.getDriName());
+				
 				return "redirect:/driver/infoform";
 			} else {
+				session.setAttribute("user", driver);
+				session.setAttribute("email", driver.getDriEmail());
+				session.setAttribute("name", driver.getDriName());
+				
 				return "redirect:/";
 			}
 		}

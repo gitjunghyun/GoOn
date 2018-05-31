@@ -60,11 +60,6 @@
 												url : '/v1/user/me',
 												success : function(res) {
 													// alert(JSON.stringify(res)); //<---- kakao.api.request 에서 불러온 결과값 json형태로 출력              
-													alert("이름:"
-															+ res.properties.nickname
-															+ "\n"
-															+ "이메일:"
-															+ res.kaccount_email);
 													alert(res.properties.nickname
 															+ "님 환영합니다.");
 

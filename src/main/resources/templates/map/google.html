@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+      #map {
+        height: 1000px;
+        width: 100%;
+       }
+    </style>
+  </head>
+  <body>
+    <h3>My Google Maps</h3>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        //map option
+        var option = {
+          zoom: 8,
+          center:{lat: 37.566679, lng: 126.978291}
+        };
+        //new map
+        var map = new google.maps.Map(document.getElementById('map'), option);
+
+        //listen for click on map
+        google.maps.event.addListener(map, 'click',
+          function(event){
+            addmarker({coords:event.latLng});
+          });
+
+        // //add marker
+        // var marker = new google.maps.Marker({
+        //   position: {lat: 37.566679, lng: 126.978291},
+        //   map: map
+        // });
+
+        // var infoWindow = new google.maps.InfoWindow({
+        //   content: '<h1>GoOn</h1>'
+        // });
+
+        // marker.addListener('click', function(){
+        //   infoWindow.open(map, marker);
+        // });
+
+        var markers = [
+        {
+          coords:{lat: 37.566679, lng: 126.978291},
+          content: '<h1>Seoul</h1>'
+        },
+        {
+          coords:{lat: 37.45639, lng: 126.70528},
+          content: '<h1>Incheon</h1>'
+        }
+        ];
+
+        //Loop through markers
+        for(var i = 0; i<markers.length; i++){
+            addMarker(markers[i]);
+        }
+
+        // addMarker({
+        //   coords:{lat: 37.566679, lng: 126.978291},
+        //   content: '<h1>Seoul</h1>'
+        // });
+
+        // addMarker({
+        //   coords:{lat: 37.45639, lng: 126.70528},
+        //   content: '<h1>Incheon</h1>'
+        // });
+
+        //Add Marker Function
+        function addMarker(props){
+          var marker = new google.maps.Marker({
+          position:props.coords,
+          map:map
+        });
+
+          if(props.content){
+              var infoWindow = new google.maps.InfoWindow({
+              content: props.content
+            });
+
+        marker.addListener('click', function(){
+              infoWindow.open(map, marker);
+            });
+          }
+        }
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCH78J9Sp7jrFzGk-2IpUjWLYBKEyTkdR4&callback=initMap">
+    </script>
+  </body>
+</html>
