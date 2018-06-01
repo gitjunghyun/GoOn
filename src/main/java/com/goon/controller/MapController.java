@@ -35,4 +35,14 @@ public class MapController {
 	public String maptest() {
 		return "/map/test";
 	}
+
+	// 설정한 경로 표시
+	@PostMapping("/map/result")
+	public String mapresult(String stLat, String stLng, String deLat, String deLng, Model model) {
+		model.addAttribute("stLat", stLat);
+		model.addAttribute("stLng", stLng);
+		model.addAttribute("deLat", deLat);
+		model.addAttribute("deLng", deLng);
+		return "/map/result";
+	}
 }

@@ -17,6 +17,21 @@
         padding: 0;
       }
     </style>
+    <script type="text/javascript">
+	function starting() {
+		document.result.stLat.value = lat;
+		document.result.stLng.value = lng;
+		alert("출발지로 설정되었습니다!");
+	}
+	function destination() {
+		document.result.deLat.value = lat;
+		document.result.deLng.value = lng;
+		alert("도착지로 설정되었습니다!");
+	}
+	function submit() {
+		document.result.submit();
+	}
+</script>
   </head>
   <body>
     <div id="map"></div>
@@ -52,5 +67,13 @@
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqUvkYS_tLCiZbvaSekdm9xCyjaJLOPDs&callback=initMap">
     </script>
+    <br>
+	<a onclick="submit();"><button type="submit">경로보기!!!</button></a>
+	<form name="result" action="/map/result" method="post">
+		<input type="hidden" name="stLat" value=""> <input
+			type="hidden" name="deLat" value=""> <input type="hidden"
+			name="stLng" value=""> <input type="hidden" name="deLng"
+			value="">
+	</form>
   </body>
 </html>
