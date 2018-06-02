@@ -8,27 +8,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class MapController {
 
-	// 지도 표시
-	@GetMapping("/map/main")
-	public String map() {
-		return "/map/main";
-	}
-
-	// 설정한 경로 표시
-	@PostMapping("/map/route")
-	public String maproute(String stLat, String stLng, String deLat, String deLng, Model model) {
-		model.addAttribute("stLat", stLat);
-		model.addAttribute("stLng", stLng);
-		model.addAttribute("deLat", deLat);
-		model.addAttribute("deLng", deLng);
-		return "/map/route";
-	}
-
 	// 구글 맵
 	@GetMapping("/map/google")
 	public String google() {
 		return "/map/google";
 	}
+	
+	// 구글 맵
+		@GetMapping("/map/main")
+		public String main() {
+			return "/map/main";
+		}
 
 	// test
 	@GetMapping("/map/test")
@@ -38,11 +28,9 @@ public class MapController {
 
 	// 설정한 경로 표시
 	@PostMapping("/map/result")
-	public String mapresult(String stLat, String stLng, String deLat, String deLng, Model model) {
-		model.addAttribute("stLat", stLat);
-		model.addAttribute("stLng", stLng);
-		model.addAttribute("deLat", deLat);
-		model.addAttribute("deLng", deLng);
+	public String mapresult(String start, String destination, Model model) {
+		model.addAttribute("start", start);
+		model.addAttribute("destination", destination);
 		return "/map/result";
 	}
 }

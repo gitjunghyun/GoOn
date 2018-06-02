@@ -14,13 +14,11 @@
 <body>
 	<h3>My Google Maps</h3>
 	<div id="map"></div>
-	<script>
-	var stLat = {{stLat}};
-	var stLng = {{stLng}};
-	var deLat = {{deLat}};
-	var deLng = {{deLng}};
-	
-		function initMap() {
+	<script type = "text/javascript">
+	var start = {{start}};
+	var destination = {{destination}};
+
+	function initMap() {
 			//map option
 			var option = {
 				zoom : 13,
@@ -53,17 +51,10 @@
 			// marker.addListener('click', function(){
 			//   infoWindow.open(map, marker);
 			// });
-
 			var markers = [ {
-				coords : {
-					lat : stLat,
-					lng : stLng
-				},
+				position : {lat: 37.566679, lng: 126.978291}
 			}, {
-				coords : {
-					lat : deLat,
-					lng : deLng
-				},
+				position : destination
 			} ];
 
 			//Loop through markers
