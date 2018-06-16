@@ -1,96 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <style>
-      #map {
-        height: 1000px;
-        width: 100%;
-       }
-    </style>
-  </head>
-  <body>
-    <h3>My Google Maps</h3>
-    <div id="map"></div>
-    <script>
-      function initMap() {
-        //map option
-        var option = {
-          zoom: 8,
-          center:{lat: 37.566679, lng: 126.978291}
-        };
-        //new map
-        var map = new google.maps.Map(document.getElementById('map'), option);
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>간단한 지도 표시하기</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script> 
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?clientId=ixWxhf_Nu6h4PbEMwp2T"></script>
+</head>
+<body>
+<div id="map" style="width:100%;height:400px;"></div>
+<script>
+var map = new naver.maps.Map('map', {
+    zoom: 4,
+    center: new naver.maps.LatLng(37.3614483, 127.1114883)
+});
 
-        //listen for click on map
-        google.maps.event.addListener(map, 'click',
-          function(event){
-            addmarker({coords:event.latLng});
-          });
+var markerList = [];
+var menuLayer = $('<div style="position:absolute;z-index:10000;background-color:#fff;border:solid 1px #333;padding:10px;display:none;"></div>');
 
-        // //add marker
-        // var marker = new google.maps.Marker({
-        //   position: {lat: 37.566679, lng: 126.978291},
-        //   map: map
-        // });
+map.getPanes().floatPane.appendChild(menuLayer[0]);
 
-        // var infoWindow = new google.maps.InfoWindow({
-        //   content: '<h1>GoOn</h1>'
-        // });
 
-        // marker.addListener('click', function(){
-        //   infoWindow.open(map, marker);
-        // });
+naver.maps.Event.addListener(map, 'click', function(e) {
+    var marker = new naver.maps.Marker({
+        position: e.coord,
+        map: map
+    });
 
-        var markers = [
-        {
-          coords:{lat: 37.566679, lng: 126.978291},
-          content: '<h1>Seoul</h1>'
-        },
-        {
-          coords:{lat: 37.45639, lng: 126.70528},
-          content: '<h1>Incheon</h1>'
-        }
-        ];
+    markerList.push(marker);
+});
 
-        //Loop through markers
-        for(var i = 0; i<markers.length; i++){
-            addMarker(markers[i]);
+naver.maps.Event.addListener(map, 'keydown', function(e) {
+    var keyboardEvent = e.keyboardEvent,
+        keyCode = keyboardEvent.keyCode || keyboardEvent.which;
+
+    var ESC = 27;
+
+    if (keyCode === ESC) {
+        keyboardEvent.preventDefault();
+
+        for (var i=0, ii=markerList.length; i<ii; i++) {
+            markerList[i].setMap(null);
         }
 
-        // addMarker({
-        //   coords:{lat: 37.566679, lng: 126.978291},
-        //   content: '<h1>Seoul</h1>'
-        // });
+        markerList = [];
 
-        // addMarker({
-        //   coords:{lat: 37.45639, lng: 126.70528},
-        //   content: '<h1>Incheon</h1>'
-        // });
+        menuLayer.hide();
+    }
+});
 
-        //Add Marker Function
-        function addMarker(props){
-          var marker = new google.maps.Marker({
-          position:props.coords,
-          map:map
-        });
+naver.maps.Event.addListener(map, 'mousedown', function(e) {
+    menuLayer.hide();
+});
 
-          if(props.content){
-              var infoWindow = new google.maps.InfoWindow({
-              content: props.content
-            });
+naver.maps.Event.addListener(map, 'rightclick', function(e) {
+    var coordHtml = 'Coord: '+ e.coord +'<br />Point: '+ e.point +'<br />Offset: '+ e.offset;
 
-        marker.addListener('click', function(){
-              infoWindow.open(map, marker);
-            });
-          }
-        }
-      }
-    </script>
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCH78J9Sp7jrFzGk-2IpUjWLYBKEyTkdR4&callback=initMap">
-    </script>
-  </body>
+    menuLayer.show().css({
+        left: e.offset.x,
+        top: e.offset.y
+    }).html(coordHtml);
+});
+
+</script>
+</body>
 </html>

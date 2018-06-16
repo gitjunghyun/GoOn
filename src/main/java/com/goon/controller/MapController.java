@@ -13,12 +13,12 @@ public class MapController {
 	public String google() {
 		return "/map/google";
 	}
-	
+
 	// 구글 맵
-		@GetMapping("/map/main")
-		public String main() {
-			return "/map/main";
-		}
+	@GetMapping("/map/main")
+	public String main() {
+		return "/map/main";
+	}
 
 	// test
 	@GetMapping("/map/test")

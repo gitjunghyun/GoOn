@@ -8,6 +8,6 @@ public class PayController {
 
 	@GetMapping("/pay")
 	public String pay() {
-		return "/kakaopay/kakaopay";
+		return "/pay/kakaopay";
 	}
 }

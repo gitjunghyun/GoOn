@@ -22,7 +22,7 @@ public class MainController {
 		if (session.getAttribute("user") == null) {
 			return "/index";
 		} else {
-			return "/map/main";
+			return "/map/test"; //////////////////////////// 여기 작업필요!
 		}
 	}
 

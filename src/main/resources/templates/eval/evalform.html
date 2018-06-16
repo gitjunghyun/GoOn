@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>GoOn</title>
+
+<!-- Bootstrap -->
+<link href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css"
+	rel="stylesheet">
+</head>
+<script type="text/javascript">
+function eval(){
+	alert("평가에 참여해주셔서 감사합니다.");
+}
+</script>
+<body>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+					aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/">GoOn(Car)</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">목록 <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="/joinform">회원가입</a></li>
+							<li><a href="#">로그인</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="/index.html">홈으로</a></li>
+						</ul></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
+
+
+	<!-- 회원가입 입력양식 시작 -->
+	<div class="container">
+		<H3>운행평가</H3>
+		<form action="/eval/evaldb" method="post">
+
+			<div class="form-group">
+				<label for="evalDrive">운전실력</label> <br> 상<input type="radio"
+					name="evalDrive" value="상"> 중<input type="radio"
+					name="evalDrive" value="중"> 하<input type="radio"
+					name="evalDrive" value="하">
+			</div>
+
+			<div class="form-group">
+				<label for="evalClean">청결도</label> <br> 청결<input type="radio"
+					name="evalClean" value="청결"> 보통<input type="radio"
+					name="evalClean" value="보통"> 더러움<input type="radio"
+					name="evalClean" value="더러움">
+			</div>
+
+			<div class="form-group">
+				<label for="evalManner">운전자 매너</label> <br> 좋음<input type="radio"
+					name="evalManner" value="좋음"> 보통<input type="radio"
+					name="evalManner" value="보통"> 나쁨<input type="radio"
+					name="evalManner" value="나쁨">
+			</div>
+
+			<div class="form-group">
+				<label for="evalText">추가 평가</label> <input type="text"
+					class="form-control" name="evalText" placeholder="200자내로 작성해주세요">
+			</div>
+
+			<button type="submit" class="btn btn-default" onclick="eval();">완료</button>
+			<a href="/"><button type="button" class="btn btn-default">취소</button></a>
+
+		</form>
+	</div>
+
+	<script src="/webjars/jquery/3.1.0/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+</body>
+</html>

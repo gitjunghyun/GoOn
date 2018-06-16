@@ -71,6 +71,7 @@ public class PassengerController {
 		passenger.setPsgTell(psg.getPsgTell());
 		passenger.setPsgPicture(psg.getPsgPicture());
 		passengerRepository.save(passenger);
+		
 		return "redirect:/";
 	}
 

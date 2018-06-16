@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>GoOn</title>
+
+<!-- Bootstrap -->
+<link href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css"
+	rel="stylesheet">
+</head>
+<script type="text/javascript">
+function carinfo (){
+	alert("차량정보가 저장되었습니다.");
+}
+</script>
+<body>
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed"
+					data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+					aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span> <span
+						class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="/">GoOn(Car)</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse"
+				id="bs-example-navbar-collapse-1">
+
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">목록 <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="/joinform">회원가입</a></li>
+							<li><a href="#">로그인</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="/index.html">홈으로</a></li>
+						</ul></li>
+				</ul>
+			</div>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+	</nav>
+
+
+	<!-- 회원가입 입력양식 시작 -->
+	<div class="container">
+		<H3>차량정보입력</H3>
+		<form action="/car/carinfodb" method="post">
+
+			<div class="form-group">
+				<label for="trunkuse">트렁크 사용여부</label> <br>사용가능<input type="radio"
+					name="trunkuse" value="사용가능"> 사용불가<input type="radio"
+					name="trunkuse" value="사용불가">
+			</div>
+
+			<div class="form-group">
+				<label for="seat">뒷자리 사용여부</label> <br>사용가능<input type="radio"
+					name="seat" value="사용가능"> 사용불가<input type="radio"
+					name="seat" value="사용불가">
+			</div>
+
+			<div class="form-group">
+				<label for="carTyoe">뒷자리 사용여부</label> <br>소형차<input type="radio"
+					name="carType" value="소형차"> 중형차<input type="radio"
+					name="carType" value="중형차"> 대형차<input type="radio"
+					name="carType" value="대형차">
+			</div>
+
+			<button type="submit" class="btn btn-default" onclick="carinfo();">완료</button>
+			<a href="/"><button type="button" class="btn btn-default">취소</button></a>
+
+		</form>
+	</div>
+
+	<script src="/webjars/jquery/3.1.0/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+</body>
+</html>
