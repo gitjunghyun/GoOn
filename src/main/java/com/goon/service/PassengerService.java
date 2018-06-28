@@ -20,7 +20,7 @@ public class PassengerService {
 		MimeMessageHelper helper;
 		
 		// 보내는 메일 내용
-		String body = "<a href=http://localhost:8080/passenger/infoform\">인증</a>";
+		String body = "<a href=\"http://6ead68eb.ngrok.io/passenger/infoform\">인증</a>";
 		String subject = "안녕하세요 GoOn입니다.";
 		
 		try {
