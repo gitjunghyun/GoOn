@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Login</title>
+<title>운전자 로그인</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport"
@@ -32,15 +32,15 @@
 						<label for="driPassword">Password</label> <input type="password"
 							class="form-control" name="driPassword" placeholder="Password">
 					</div>
-					<button href="#" class="btn btn-success btn-block">로그인</button>
+					<button href="/map/main.html" class="btn btn-success btn-block">로그인</button>
 				</form>
 				<a href="/driver/joinform"><button
-						class="btn btn-success btn-block">이메일로 회원가입</button></a><br> <a
-					id="kakao-login-btn"></a> <a href="http://developers.kakao.com/logout"></a>
+						class="btn btn-success btn-block">이메일로 회원가입</button></a><br> 
+						<a id="kakao-login-btn"></a> <a href="http://developers.kakao.com/logout"></a>
 
 				<form name="driverform" action="/driver/kakaojoin" method="post">
 					<input type="hidden" name="driName" value=""> <input
-						type="hidden" name="driEmail" value="이메일">
+						type="hidden" name="driEmail" value="">
 				</form>
 				<script type="text/javascript">
 					var name;
