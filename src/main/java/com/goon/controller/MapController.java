@@ -13,7 +13,7 @@ public class MapController {
 	public String main() {
 		return "/map/main";
 	}
-	
+
 //	// test
 //	@GetMapping("/map/google")
 //	public String googleee() {

@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Implementation-Title: GoOn
 Implementation-Version: 1.0
-Built-By: CS3-30
+Built-By: leeu
 Implementation-Vendor-Id: com.goon
 Build-Jdk: 1.8.0_171
 Implementation-URL: http://projects.spring.io/spring-boot/com.goon/

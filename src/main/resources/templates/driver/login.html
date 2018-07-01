@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<title>운전자 로그인</title>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport"
-	content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
-<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="../css/bootstrap.css">
-<link rel="stylesheet" type="text/css" href="../css/global.css">
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="../js/bootstrap.js"></script>
-<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+<head>
+	<title>운전자 로그인</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width" />
+	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="../css/global.css">
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="../js/bootstrap.js"></script>
+	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 </head>
+
 <body>
 	<div class="container-fluid">
 		<div class="row">
@@ -25,22 +26,19 @@
 				<form action="/driver/login" class="form-container" method="POST">
 					<h1>로그인</h1>
 					<div class="form-group">
-						<label for="driEmail">Email</label> <input type="email"
-							class="form-control" name="driEmail" placeholder="Email">
+						<label for="driEmail">Email</label> <input type="email" class="form-control" name="driEmail" placeholder="Email">
 					</div>
 					<div class="form-group">
-						<label for="driPassword">Password</label> <input type="password"
-							class="form-control" name="driPassword" placeholder="Password">
+						<label for="driPassword">Password</label> <input type="password" class="form-control" name="driPassword" placeholder="Password">
 					</div>
 					<button href="/map/main.html" class="btn btn-success btn-block">로그인</button>
 				</form>
 				<a href="/driver/joinform"><button
-						class="btn btn-success btn-block">이메일로 회원가입</button></a><br> 
-						<a id="kakao-login-btn"></a> <a href="http://developers.kakao.com/logout"></a>
+						class="btn btn-success btn-block">이메일로 회원가입</button></a><br>
+				<a id="kakao-login-btn"></a> <a href="http://developers.kakao.com/logout"></a>
 
 				<form name="driverform" action="/driver/kakaojoin" method="post">
-					<input type="hidden" name="driName" value=""> <input
-						type="hidden" name="driEmail" value="">
+					<input type="hidden" name="driName" value=""> <input type="hidden" name="driEmail" value="">
 				</form>
 				<script type="text/javascript">
 					var name;
@@ -49,41 +47,35 @@
 					Kakao.init('39de6d52f3a5b6635bed9ac5330fdba9');
 					// 카카오 로그인 버튼을 생성합니다.
 
-					Kakao.Auth
-							.createLoginButton({
-								container : '#kakao-login-btn',
-								success : function(authObj) {
-									// 로그인 성공시, API를 호출합니다.
-									Kakao.API
-											.request({
-												url : '/v1/user/me',
-												success : function(res) {
-													// alert(JSON.stringify(res)); //<---- kakao.api.request 에서 불러온 결과값 json형태로 출력              
-													alert("이름:"
-															+ res.properties.nickname
-															+ "\n"
-															+ "이메일:"
-															+ res.kaccount_email);
-													alert(res.properties.nickname
-															+ "님 환영합니다.");
+					Kakao.Auth.createLoginButton({
+						container: '#kakao-login-btn',
+						success: function(authObj) {
+							// 로그인 성공시, API를 호출합니다.
+							Kakao.API
+								.request({
+									url: '/v1/user/me',
+									success: function(res) {
+										// alert(JSON.stringify(res)); //<---- kakao.api.request 에서 불러온 결과값 json형태로 출력
+										alert(res.properties.nickname +
+											"님 환영합니다.");
 
-													name = res.properties.nickname;
-													email = res.kaccount_email;
+										name = res.properties.nickname;
+										email = res.kaccount_email;
 
-													document.driverform.driName.value = name;
-													document.driverform.driEmail.value = email;
-													document.driverform.submit();
-												},
-												fail : function(error) {
-													alert(JSON.stringify(error));
-												}
-											});
+										document.driverform.driName.value = name;
+										document.driverform.driEmail.value = email;
+										document.driverform.submit();
+									},
+									fail: function(error) {
+										alert(JSON.stringify(error));
+									}
+								});
 
-								},
-								fail : function(err) {
-									alert(JSON.stringify(err));
-								}
-							});
+						},
+						fail: function(err) {
+							alert(JSON.stringify(err));
+						}
+					});
 
 					function ktout() {
 
@@ -105,4 +97,5 @@
 		</div>
 	</div>
 </body>
+
 </html>
