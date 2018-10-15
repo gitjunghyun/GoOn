@@ -9,13 +9,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class MainController {
 
-	// 테스트
-	@GetMapping("/test")
-	public String test(Model model) {
-		model.addAttribute("name", "이정현");
-		return "/test";
-	}
-
 	// 메인화면
 	@GetMapping("/")
 	public String index(HttpSession session) {
