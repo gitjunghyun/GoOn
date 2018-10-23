@@ -2,13 +2,49 @@
 <html>
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<title>simpleMap</title>
-	<script src="https://api2.sktelecom.com/tmap/js?version=1&format=javascript&appKey=90a2fad8-506c-42f1-83a8-80ed5a22af04"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
-	<link href="css/smoothness/jquery-ui-1.10.2.custom.css" rel="stylesheet" type="text/css">
-	<script type="text/javascript">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>simpleMap</title>
+<script
+	src="https://api2.sktelecom.com/tmap/js?version=1&format=javascript&appKey=90a2fad8-506c-42f1-83a8-80ed5a22af04"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<link href="css/smoothness/jquery-ui-1.10.2.custom.css" rel="stylesheet"
+	type="text/css">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+	crossorigin="anonymous">
+<style type="text/css">
+body {
+	overflow: hidden;
+}
+
+.tmap-board {
+	height: 70vh !important;
+}
+
+.container-map {
+	
+}
+
+.map-btn {
+	width: 400px;
+	height: 100px;
+	background-color: gray;
+	border-radius: 50px;
+	margin-left: calc(15% - 200px);
+	top: 25%;
+}
+
+.fas {
+	width: 100px;
+	height: 100px;
+}
+</style>
+
+<script type="text/javascript">
 		var sx;
 		var sy;
 		var ex;
@@ -342,23 +378,31 @@
 </head>
 
 <body onload="initTmap()">
-	<div id="map_div"></div>
-
-	<br>
-<!-- 		<a onclick="draw();"><button type="submit">경로 탐색</button></a> -->
-		<a onclick="distance();"><button type="submit">거리 탐색</button></a>
-		<form name="route" action="/map/route" method="POST">
-		<input type="hidden" name="startX" value="">
-		<input type="hidden" name="startY" value="">
-		<input type="hidden" name="endX" value="">
-		<input type="hidden" name="endY" value="">
-		<input type="hidden" name="time" value="">
-		<input type="hidden" name="fee" value="">
-		<input type="hidden" name="distance" value="">
-		<button type="submit">경로 저장</button>
-		</form>
-		<a href="/map/psgmain"><button type="submit">운전자 보기</button></a>
-		<p id="result"></p>
+	<div class="container-map">
+		<div id="map_div" class="tmap-board"></div>
+		<div>
+			<br>
+			<!-- 		<a onclick="draw();"><button type="submit">경로 탐색</button></a> -->
+			<div class="map-btn">
+				<a onclick="distance();"> <i class="fas fa-car"></i>
+					<button type="submit">거리 탐색</button></a>
+				<form name="route" action="/map/route" method="POST">
+					<input type="hidden" name="startX" value=""> <input
+						type="hidden" name="startY" value=""> <input type="hidden"
+						name="endX" value=""> <input type="hidden" name="endY"
+						value=""> <input type="hidden" name="time" value="">
+					<input type="hidden" name="fee" value=""> <input
+						type="hidden" name="distance" value=""> <i
+						class="fas fa-save"></i>
+					<button type="submit">경로 저장</button>
+				</form>
+				<a href="/map/psgmain"><i class="fas fa-users"></i>
+					<button type="submit">운전자 보기</button></a>
+				<p id="result"></p>
+			</div>
+		</div>
+	</div>
+	<i class="fas fa-users"></i>
 </body>
 
 </html>

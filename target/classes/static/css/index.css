@@ -30,16 +30,18 @@
 	font-size: 20px;
 	text-align: center;
 	margin: 20px 10%;
+	text-shadow: 1px 1px black;
 }
 
 .indexpage .left .window .text span {
 	color: white;
-	font-size: 30px;
+	font-size: 50px;
 }
 
 .indexpage .left .window .text a {
 	color: white;
 	font-size: 30px;
+	text-decoration: none;
 }
 
 .indexpage .right .window {
@@ -56,16 +58,18 @@
 	font-size: 20px;
 	text-align: center;
 	margin: 20px 10%;
+	text-shadow: 1px 1px black;
 }
 
 .indexpage .right .window .text span {
 	color: white;
-	font-size: 30px;
+	font-size: 50px;
 }
 
 .indexpage .right .window .text a {
 	color: white;
 	font-size: 30px;
+	text-decoration: none;
 }
 
 .indexpage .left .back {
@@ -77,6 +81,8 @@
 
 .indexpage .left .back img{
 	height: 100vh;
+	opacity: 0.8;
+	
 }
 
 .indexpage .right .back {
@@ -88,6 +94,7 @@
 
 .indexpage .right .back img{
 	height: 100vh;
+	opacity: 0.8;
 }
 
 .logo {
