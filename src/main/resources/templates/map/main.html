@@ -26,21 +26,49 @@ body {
 }
 
 .container-map {
-	
+	width: 100vw;
+	height: 100vh;
+}
+
+#map_div {
+	width: 100%;
+	height: 80% !important;
 }
 
 .map-btn {
-	width: 400px;
-	height: 100px;
-	background-color: gray;
-	border-radius: 50px;
-	margin-left: calc(15% - 200px);
-	top: 25%;
+	height: 20%;
+	background: #d6d6d6c4;
+	border-top: 3px solid gray;
+}
+
+.btn-list {
+	margin-top: 50px;
+	margin-right: auto;
+	margin-left: auto;
+	display: flex;
+	width: fit-content;
+}
+
+.btn-list>div {
+	text-align: center;
+	margin-right: 100px;
+}
+
+.btn-list button {
+	font-size: 20px;
+	border: 0px;
+}
+
+.btn-list button:hover {
+	cursor: pointer;
+	border: 1px solid gray;
+	border-radius: 20px;
 }
 
 .fas {
-	width: 100px;
-	height: 100px;
+	font-size: 100px;
+	margin-bottom: 10px;
+	color: #0098bc;
 }
 </style>
 
@@ -380,29 +408,141 @@ body {
 <body onload="initTmap()">
 	<div class="container-map">
 		<div id="map_div" class="tmap-board"></div>
-		<div>
-			<br>
-			<!-- 		<a onclick="draw();"><button type="submit">경로 탐색</button></a> -->
-			<div class="map-btn">
-				<a onclick="distance();"> <i class="fas fa-car"></i>
-					<button type="submit">거리 탐색</button></a>
-				<form name="route" action="/map/route" method="POST">
-					<input type="hidden" name="startX" value=""> <input
-						type="hidden" name="startY" value=""> <input type="hidden"
-						name="endX" value=""> <input type="hidden" name="endY"
-						value=""> <input type="hidden" name="time" value="">
-					<input type="hidden" name="fee" value=""> <input
-						type="hidden" name="distance" value=""> <i
-						class="fas fa-save"></i>
-					<button type="submit">경로 저장</button>
-				</form>
-				<a href="/map/psgmain"><i class="fas fa-users"></i>
-					<button type="submit">운전자 보기</button></a>
-				<p id="result"></p>
+
+		<div class="map-btn">
+			<div class="btn-list">
+				<div>
+					<a onclick="distance();">
+						<button type="submit">
+							<i class="fas fa-car"></i><br>거리 탐색
+						</button>
+					</a>
+				</div>
+				<div>
+					<form name="route" action="/map/route" method="POST">
+						<input type="hidden" name="startX" value=""> <input
+							type="hidden" name="startY" value=""> <input
+							type="hidden" name="endX" value=""> <input type="hidden"
+							name="endY" value=""> <input type="hidden" name="time"
+							value=""> <input type="hidden" name="fee" value="">
+						<input type="hidden" name="distance" value="">
+						<button type="submit">
+							<i class="fas fa-save"></i><br>경로 저장
+						</button>
+					</form>
+				</div>
+				<div>
+					<a href="/map/psgmain">
+						<button>
+							<i class="fas fa-users"></i><br>운전자 보기
+						</button>
+					</a>
+				</div>
 			</div>
 		</div>
+		<form name="route1" action="/map/route" method="POST">
+			<input type="hidden" name="startX1" value=""> 
+			<input type="hidden" name="startY1" value=""> 
+			<input type="hidden" name="endX1" value=""> 
+			<input type="hidden" name="endY1" value=""> 
+			<input type="hidden" name="time1" value="">
+			<input type="hidden" name="fee1" value=""> 
+			<input type="hidden" name="distance1" value="">
+		</form>
+		<form name="route2" action="/map/route" method="POST">
+			<input type="hidden" name="startX2" value=""> 
+			<input type="hidden" name="startY2" value=""> 
+			<input type="hidden" name="endX2" value=""> 
+			<input type="hidden" name="endY2" value=""> 
+			<input type="hidden" name="time2" value="">
+			<input type="hidden" name="fee2" value=""> 
+			<input type="hidden" name="distance2" value="">
+		</form>
+		<form name="route3" action="/map/route" method="POST">
+			<input type="hidden" name="startX3" value=""> 
+			<input type="hidden" name="startY3" value=""> 
+			<input type="hidden" name="endX3" value=""> 
+			<input type="hidden" name="endY3" value=""> 
+			<input type="hidden" name="time3" value="">
+			<input type="hidden" name="fee3" value=""> 
+			<input type="hidden" name="distance3" value="">
+		</form>
+		<form name="route4" action="/map/route" method="POST">
+			<input type="hidden" name="startX4" value=""> 
+			<input type="hidden" name="startY4" value=""> 
+			<input type="hidden" name="endX4" value=""> 
+			<input type="hidden" name="endY4" value=""> 
+			<input type="hidden" name="time4" value="">
+			<input type="hidden" name="fee4" value=""> 
+			<input type="hidden" name="distance4" value="">
+		</form>
+		<form name="route5" action="/map/route" method="POST">
+			<input type="hidden" name="startX5" value=""> 
+			<input type="hidden" name="startY5" value=""> 
+			<input type="hidden" name="endX5" value=""> 
+			<input type="hidden" name="endY5" value=""> 
+			<input type="hidden" name="time5" value="">
+			<input type="hidden" name="fee5" value=""> 
+			<input type="hidden" name="distance5" value="">
+		</form>
+		<form name="route6" action="/map/route" method="POST">
+			<input type="hidden" name="startX6" value=""> 
+			<input type="hidden" name="startY6" value=""> 
+			<input type="hidden" name="endX6" value=""> 
+			<input type="hidden" name="endY6" value=""> 
+			<input type="hidden" name="time6" value="">
+			<input type="hidden" name="fee6" value=""> 
+			<input type="hidden" name="distance6" value="">
+		</form>
+		<form name="route7" action="/map/route" method="POST">
+			<input type="hidden" name="startX7" value=""> 
+			<input type="hidden" name="startY7" value=""> 
+			<input type="hidden" name="endX7" value=""> 
+			<input type="hidden" name="endY7" value=""> 
+			<input type="hidden" name="time7" value="">
+			<input type="hidden" name="fee7" value=""> 
+			<input type="hidden" name="distance7" value="">
+		</form>
+		<form name="route8" action="/map/route" method="POST">
+			<input type="hidden" name="startX8" value=""> 
+			<input type="hidden" name="startY8" value=""> 
+			<input type="hidden" name="endX8" value=""> 
+			<input type="hidden" name="endY8" value=""> 
+			<input type="hidden" name="time8" value="">
+			<input type="hidden" name="fee8" value=""> 
+			<input type="hidden" name="distance8" value="">
+		</form>
+		<form name="route9" action="/map/route" method="POST">
+			<input type="hidden" name="startX9" value=""> 
+			<input type="hidden" name="startY9" value=""> 
+			<input type="hidden" name="endX9" value=""> 
+			<input type="hidden" name="endY9" value=""> 
+			<input type="hidden" name="time9" value="">
+			<input type="hidden" name="fee9" value=""> 
+			<input type="hidden" name="distance9" value="">
+		</form>
+		<form name="route10" action="/map/route" method="POST">
+			<input type="hidden" name="startX10" value=""> 
+			<input type="hidden" name="startY10" value=""> 
+			<input type="hidden" name="endX10" value=""> 
+			<input type="hidden" name="endY10" value=""> 
+			<input type="hidden" name="time10" value="">
+			<input type="hidden" name="fee10" value=""> 
+			<input type="hidden" name="distance10" value="">
+		</form>
+		<form name="route11" action="/map/route" method="POST">
+			<input type="hidden" name="startX11" value=""> 
+			<input type="hidden" name="startY11" value=""> 
+			<input type="hidden" name="endX11" value=""> 
+			<input type="hidden" name="endY11" value=""> 
+			<input type="hidden" name="time11" value="">
+			<input type="hidden" name="fee11" value=""> 
+			<input type="hidden" name="distance11" value="">
+		</form>
+
 	</div>
-	<i class="fas fa-users"></i>
+
+
 </body>
 
 </html>

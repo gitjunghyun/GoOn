@@ -10,11 +10,47 @@
 <!-- Bootstrap -->
 <link href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css"
 	rel="stylesheet">
+<style>
+body {
+	overflow: hidden;
+}
+
+.back img{
+	position: absolute;
+	width: 100vw;
+	z-index: -10;
+	top: 0;
+	left: 0;
+	opacity: 0.8;
+}
+
+.infoform {
+	position: absolute;
+	width: 500px;
+	height: 450px;
+	left: calc(50% - 250px);
+	top: 30%;
+	background: white;
+	border-radius: 50px;
+	opacity: 0.9;
+}
+
+.infoform h3 {
+	font-size: 30px;
+	text-align: center;
+	margin-bottom: 30px;
+	margin-top: 40px;
+}
+
+.infoform form {
+	font-size: 17px;
+}
+</style>
 </head>
 <script type="text/javascript">
-function join(){
-	alert("회원가입을 축하드립니다!");
-}
+	function join() {
+		alert("회원가입을 축하드립니다!");
+	}
 </script>
 <body>
 	<script>
@@ -22,6 +58,9 @@ function join(){
 	</script>
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
+			<div class="back">
+				<img alt="" src="/img/infoformback.jpg">
+			</div>
 			<!-- Brand and toggle get grouped for better mobile display -->
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle collapsed"
@@ -57,7 +96,7 @@ function join(){
 
 
 	<!-- 회원가입 입력양식 시작 -->
-	<div class="container">
+	<div class="container infoform">
 		<H3>추가정보입력</H3>
 		<form action="/passenger/joinmember" method="post">
 
@@ -80,7 +119,8 @@ function join(){
 			</div>
 
 			<button type="submit" class="btn btn-default" onclick="join();">완료</button>
-			<a href="/passenger/login"><button type="button" class="btn btn-default">취소</button></a>
+			<a href="/passenger/login"><button type="button"
+					class="btn btn-default">취소</button></a>
 
 		</form>
 	</div>

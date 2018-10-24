@@ -24,15 +24,18 @@ public class RouteController {
 	// 탑승자 지도 화면
 	@GetMapping("/map/psgmain")
 	public String psgroute(Model model) {
-		Route route = routerepository.findOne((long) 6);
-		
-		model.addAttribute("startX", route.getStartX());
-		model.addAttribute("startY", route.getStartY());
-		model.addAttribute("endX", route.getEndX());
-		model.addAttribute("endY", route.getEndY());
-		model.addAttribute("distance", route.getDistance());
-		model.addAttribute("fee", route.getFee());
-		model.addAttribute("time", route.getTime());
+
+		for (int i = 1; i < 12; i++) {
+			Route route = routerepository.findOne((long) i + 16);
+
+			model.addAttribute("startX" + Integer.toString(i), route.getStartX());
+			model.addAttribute("startY" + Integer.toString(i), route.getStartY());
+			model.addAttribute("endX" + Integer.toString(i), route.getEndX());
+			model.addAttribute("endY" + Integer.toString(i), route.getEndY());
+			model.addAttribute("distance" + Integer.toString(i), route.getDistance());
+			model.addAttribute("fee" + Integer.toString(i), route.getFee());
+			model.addAttribute("time" + Integer.toString(i), route.getTime());
+		}
 		
 		return "/map/psgmain";
 	}
